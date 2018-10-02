@@ -1,0 +1,13 @@
+{
+  "extends": ["tslint-config-standard"],
+  "linterOptions": {
+    "exclude": [
+      "**/node_modules",
+      "**/deploy"
+    ]
+  },
+  "rules": {
+    "await-promise": false,
+    "no-unused-variable": true
+  }
+}

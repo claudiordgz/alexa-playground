@@ -1,0 +1,55 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.f11cbbd7-4260-42a0-8a5e-7d51a03f3c54",
+      "was_cloned": false,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-space-geek-lambda-default"
+              }
+            }
+          }
+        }
+      },
+      "resources": {
+        "manifest": {
+          "eTag": "76372a29adddd2dda514d92038ce2f2c"
+        },
+        "interactionModel": {
+          "en-US": {
+            "eTag": "cbbe825efb4f5f5aa216ab970ecce01d"
+          }
+        },
+        "lambda": [
+          {
+            "arn": "arn:aws:lambda:us-east-1:358485744732:function:ask-custom-space-geek-lambda-default",
+            "functionName": "arn:aws:lambda:us-east-1:358485744732:function:ask-custom-space-geek-lambda-default",
+            "awsRegion": "us-east-1",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "be848a1f-82c0-42b6-acbd-b0291b021b65"
+          }
+        ]
+      }
+    },
+    "claudio": {
+      "skill_id": "",
+      "was_cloned": false,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-space-geek-claudio"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
