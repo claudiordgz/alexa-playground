@@ -3,11 +3,7 @@
   "linterOptions": {
     "exclude": [
       "**/node_modules",
-      "**/deploy",
-      "src/**/*.spec.ts"
-    ],
-    "include": [
-      "src/**/*"
+      "**/dist"
     ]
   },
   "rules": {

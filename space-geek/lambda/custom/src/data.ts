@@ -1,7 +1,7 @@
 /**
  * Array containing space facts.
  */
-export const FACTS = [
+export const FACTS: string[] = [
   'A year on Mercury is just 88 days long.',
   'Despite being farther from the Sun, Venus experiences higher temperatures than Mercury.',
   'Venus rotates counter-clockwise, possibly because of a collision in the past with an asteroid.',

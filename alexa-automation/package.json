@@ -1,0 +1,53 @@
+{
+  "name": "alexa-automation",
+  "version": "0.0.1",
+  "description": "Automation tools for CI/CD of alexa apps",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "test": "jest",
+    "lint": "tslint --config tslint.json --project tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.3",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.3",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "/src/.*.+\\.(test|spec).+(js)?$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testPathIgnorePatterns": [
+      "/dist/",
+      "/node_modules/"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/claudiordgz/alexa-playground.git"
+  },
+  "keywords": [
+    "alexa",
+    "typescript",
+    "webpack",
+    "ask-cli",
+    "amazon",
+    "sdk"
+  ],
+  "author": "claudiordgz <claudio.rdgz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/claudiordgz/alexa-playground/issues"
+  },
+  "homepage": "https://github.com/claudiordgz/alexa-playground#readme"
+}
