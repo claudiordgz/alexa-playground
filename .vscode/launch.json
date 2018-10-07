@@ -21,11 +21,13 @@
       "name": "Automation Scripts",
       "autoAttachChildProcesses": true,
       "stopOnEntry": true,
+      // "preLaunchTask": "alexaAutomationBuild",
       "program": "${workspaceFolder}/alexa-automation/dist/index.js",
       "skipFiles": [
         "<node_internals>/**/*.js",
         "**/*.spec.ts"
-      ]
+      ],
+      // "useWSL": true
     }
   ]
 }
