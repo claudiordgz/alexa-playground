@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "alexaAutomationBuild",
+      "type": "shell",
+      "options": {
+        "shell": {
+          "executable": "C:/Windows/System32/cmd.exe"
+        },
+        "cwd": "${workspaceFolder}/alexa-automation"
+      },
+      "command": "npm run build",
+      "group": "build"
+    }
+  ]
+}

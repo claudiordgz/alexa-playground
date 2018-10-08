@@ -7,19 +7,25 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Automation",
-      "program": "${workspaceFolder}/app.js"
+      "name": "Automation Jest Tests",
+      "program": "${workspaceFolder}/alexa-automation/node_modules/jest/bin/jest.js",
+      "args": [
+        "--config",
+        "${workspaceFolder}/alexa-automation/package.json",
+        "--runInBand"
+      ]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch via NPM",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug"
-      ],
-      "port": 9229
+      "name": "Automation Scripts",
+      "autoAttachChildProcesses": true,
+      "stopOnEntry": true,
+      "program": "${workspaceFolder}/alexa-automation/dist/index.js",
+      "skipFiles": [
+        "<node_internals>/**/*.js",
+        "**/*.spec.ts"
+      ]
     }
   ]
 }
