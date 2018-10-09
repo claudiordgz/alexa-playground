@@ -2,24 +2,25 @@ import { spawn } from 'child_process'
 import * as which from 'which'
 import { StringDecoder } from 'string_decoder'
 import { puppeteerPerformAmazonLogin } from './puppeteerPerformAmazonLogin'
+import { AlexaAutomationConfig } from './types'
 
 interface Decision {
   input: string
-  output: (inputString?: string) => Promise<string>
+  output: (configuration: AlexaAutomationConfig, inputString?: string) => Promise<string>
 }
 
 const DecisionModel: Array<Decision> = [
   {
     input: `Please choose one from the following AWS profiles for skill's Lambda function`,
-    output: () => Promise.resolve('\n')
+    output: async () => '\n' // <-- default profile
   },
   {
     input: `Paste the following url to your browser`,
-    output: (inputString) => {
+    output: (configuration: AlexaAutomationConfig, inputString) => {
       if (!inputString) {
         throw(new Error('Undefined Options'))
       }
-      return puppeteerPerformAmazonLogin(inputString)
+      return puppeteerPerformAmazonLogin(configuration, inputString)
     }
   }
 ]
@@ -29,7 +30,28 @@ function findAsk (): string {
   return askCommand
 }
 
+function getConfiguration (): AlexaAutomationConfig {
+  const amazonLogin = process.env.AMAZON_LOGIN
+  if (!amazonLogin) {
+    throw(new Error('No AMAZON_LOGIN defined'))
+  }
+  const amazonPwd = process.env.AMAZON_PASSWORD
+  if (!amazonPwd) {
+    throw(new Error('No AMAZON_PASSWORD defined'))
+  }
+  const awsRegion = process.env.AWS_REGION
+  if (!awsRegion) {
+    throw(new Error('No AWS_REGION defined'))
+  }
+  return {
+    amazonLogin,
+    amazonPwd,
+    awsRegion
+  }
+}
+
 function executeAsk () {
+  const configuration: AlexaAutomationConfig = getConfiguration()
   const askCommand = findAsk()
   const child = spawn(askCommand, [ 'init', '--no-browser', '-p', 'automation' ])
   let state = 0
@@ -41,7 +63,7 @@ function executeAsk () {
     const modelState = DecisionModel[state]
     if (modelState && data.indexOf(modelState.input) !== -1) {
       state += 1
-      const output = await modelState.output(data)
+      const output = await modelState.output(configuration, data)
       child.stdin.write(output)
     }
     console.log(`child stdout:\n${data}`)
