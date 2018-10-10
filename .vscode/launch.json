@@ -27,6 +27,9 @@
         "<node_internals>/**/*.js",
         "**/*.spec.ts"
       ],
+      "env": {
+        "AWS_REGION": "us-east-1"
+      }
       // "useWSL": true
     }
   ]
